@@ -16,6 +16,12 @@ export class TodosComponent implements OnInit {
   todos: any[] = [];
 
   ngOnInit(): void {
+    client.queries.sayHello({
+      name: "Amplify",
+    }).then((response) => {
+      console.log('Respuesta: ', response.data);
+    })
+    
     this.listTodos();
   }
 
