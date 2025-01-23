@@ -16,6 +16,7 @@ export class TodosComponent implements OnInit {
   todos: any[] = [];
 
   ngOnInit(): void {
+    // Accede con GraphQL a la lambda sayHello, la cual tiene su lógica y devuelve el resultado
     client.queries.sayHello({
       name: "Amplify",
     }).then((response) => {
@@ -27,6 +28,7 @@ export class TodosComponent implements OnInit {
 
   listTodos() {
     try {
+      // Accedo con GraphQL directamente a la BBDD desde el front. El modelo de Todo se define en backend
       client.models.Todo.observeQuery().subscribe({
         next: ({ items, isSynced }) => {
           this.todos = items;
